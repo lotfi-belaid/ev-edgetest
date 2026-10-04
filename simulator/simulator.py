@@ -3,6 +3,7 @@ import random
 import time
 import argparse
 from datetime import datetime, timezone
+from validator import validate_telemetry, print_validation_results
 
 
 DEVICE_ID = "ECU-001"
@@ -58,6 +59,9 @@ def main():
 
         print(json.dumps(telemetry, indent=2))
 
+        results = validate_telemetry(telemetry)
+
+        print_validation_results(results)
         time.sleep(1)
 
 
